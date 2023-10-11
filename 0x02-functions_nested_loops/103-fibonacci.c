@@ -6,7 +6,7 @@
  * Description: prints the sum of even-valued
  *	Fibonacci sequence not exceed 4,000,000
  *
- * Return = always 0 (Success)
+ * Return:  always 0 (Success)
 */
 
 int main(void)
