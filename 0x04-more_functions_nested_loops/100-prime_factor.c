@@ -10,7 +10,7 @@
 
 double _sqrt(double x)
 {
-	float sqrt, tmp;
+	double sqrt, tmp;
 
 	sqrt = x / 2;
 	tmp = 0;
@@ -44,7 +44,7 @@ void largest_prime_factor(long int num)
 		while (num % prmNu == 0)
 		{
 			num = num / prmNu;
-			largest = prmNNu;
+			largest = prmNu;
 		}
 	}
 
