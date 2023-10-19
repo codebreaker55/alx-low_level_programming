@@ -3,7 +3,7 @@
 /**
  * print_number - function that prints an integer
  *
- * @n: is the number of elements
+ * @n: is integer number
  *
  * Return: 0
 */
@@ -20,4 +20,5 @@ void print_number(int n)
 		print_number(n / 10);
 	}
 	_putchar(n % 10 + 48);
+	return (0);
 }
