@@ -19,7 +19,7 @@ char *_strchr(char *s, char c)
 	{
 		if (*(s + ch) == c)
 		{
-			return (s);
+			return (s + ch);
 		}
 		ch++;
 	}
