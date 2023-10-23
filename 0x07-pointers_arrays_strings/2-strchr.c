@@ -15,7 +15,7 @@ char *_strchr(char *s, char c)
 {
 	int ch = 0;
 
-	while (s[ch] >= '\0')
+	while (s[ch] != '\0')
 	{
 		if (s[ch] == c)
 		{
@@ -23,5 +23,5 @@ char *_strchr(char *s, char c)
 		}
 		ch++
 	}
-	return ('\0');
+	return NULL;
 }
