@@ -17,9 +17,9 @@ int _sqrt_recursion(int n)
 }
 
 /**
- * square - used to fined the square root
- * @n: is an integer
+ * square - used to find the square root
  * @sqr: is a square root
+ * @n: is an integer
  * Return: an integer
 */
 
