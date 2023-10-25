@@ -31,7 +31,7 @@ int prime_check(int n, int div)
 	{
 		return (0);
 	}
-	else if (n >= 2 && div >= n)
+	else if (n > 1 && div >= n)
 	{
 		return (1);
 	}
