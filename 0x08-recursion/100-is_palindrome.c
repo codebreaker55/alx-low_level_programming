@@ -9,7 +9,7 @@
  * @beg: is an integer
  * @end: is an integer
  *
- * RETURN: 1 if a string is a palindrome and 0 if not
+ * Return: 1 if a string is a palindrome, 0 otherwise
 */
 
 int palindrome_find(char *s, int beg, int end);
@@ -22,12 +22,11 @@ int is_palindrome(char *s)
 }
 
 /**
- * palindrome_find - function used to find palindrome
+ * palindrome_find - Recursively checks if a string is a palindrom
  * @beg: is an integer
  * @end: is an integer
- * @s: is the name of the string
- * Return: return 1 if its paalindrome, 0 if not
- *	return it self untile beg is greter than or equal end
+ * @s: is the name of the string to be checked
+ * Return: 1 if the string is a palindrome, 0 otherwise
 */
 
 int palindrome_find(char *s, int beg, int end)
