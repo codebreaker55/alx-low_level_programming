@@ -16,15 +16,18 @@ int palindrome_find(char *s, int beg, int end);
 int palindrome_wrapper(char *s);
 int is_palindrome(char *s)
 {
-	return (*s);
+	int len = strlen(s);
+
+	return (palindrome_find(s, 0, len - 1));
 }
 
 /**
- * palindrome_find - to find palindrome
+ * palindrome_find - function used to find palindrome
  * @beg: is an integer
  * @end: is an integer
- * @s: is the naame of the string
- * Return: 1 if its paalindrome, 0 if not
+ * @s: is the name of the string
+ * Return: return 1 if its paalindrome, 0 if not
+ *	return it self untile beg is greter than or equal end
 */
 
 int palindrome_find(char *s, int beg, int end)
