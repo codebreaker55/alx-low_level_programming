@@ -17,17 +17,9 @@ char *create_array(unsigned int size, char c)
 
 	while (size--)
 	{
-		if (size % 10)
+		if (size == 0 || ptr == 0)
 		{
-			_putchar(' ');
-		}
-		else if (!(size % 10) && size)
-		{
-			_putchar('\n');
-		}
-		else if (size == 0 || ptr == 0)
-		{
-			return (0);
+			return (NULL);
 		}
 		ptr[size] = c;
 	}
