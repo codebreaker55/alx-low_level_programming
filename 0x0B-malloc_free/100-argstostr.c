@@ -20,13 +20,13 @@ char *argstostr(int ac, char **av)
 
 	while (len < ac)
 	{
+		LEN = LEN + strlen(av[len]) + 1;
 		len++;
-		LEN = LEN + strlen((av[len]) + 1);
 	}
 	LEN++;
 	ptr = (char *) malloc((LEN + 1) * sizeof(char));
 
-	if (ptr == 0)
+	if (ptr == NULL)
 	{
 		return (NULL);
 	}
