@@ -22,6 +22,7 @@ int wrdspr(char *s)
 		else if (i == 0)
 			num++;
 	}
+	num++;
 	return (num);
 }
 
