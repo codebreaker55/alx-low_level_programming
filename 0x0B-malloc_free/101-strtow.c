@@ -41,10 +41,10 @@ char **strtow(char *str)
 	int i, j, k, len, num = 0, count = 0;
 	char **ptr;
 
-	if (str == NULL || str == "")
+	if (str == NULL || *str == '\0')
 		return (NULL);
 	num = wrdspr(str);
-	if (num == 0)
+	if (num == 1)
 		return (NULL);
 	ptr = (char **) malloc(num * sizeof(char *));
 	if (ptr == NULL)
