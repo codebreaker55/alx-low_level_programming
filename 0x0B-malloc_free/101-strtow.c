@@ -10,20 +10,18 @@
 
 int wrdcnt(char *s)
 {
-	int i = 0, num = 0;
+	int i, num = 0;
 
-	while (s[i])
+	for (i = 0; s[i]; i++)
 	{
 		if (s[i] == ' ')
 		{
 			if (s[i + 1] != ' ' && s[i + 1] != '\0')
-				num++
+				num++;
 		}
 		else if (i == 0)
 			num++;
-		i++;
 	}
-	num++;
 	return (num);
 }
 
@@ -39,35 +37,29 @@ int wrdcnt(char *s)
 
 char **strtow(char *str)
 {
-	int i = 0, j = 0, k, len = 0, num = 0, count = 0;
+	int i = 0, j, k, len = 0, num = 0, count = 0;
 	char **ptr;
 
-	if (str == NULL || str == "")
+	if (str == NULL || *str == '\0')
 		return (NULL);
 	num = wrdcnt(str);
-	if (num == 1)
+	if (num == 0)
 		return (NULL);
 	ptr = (char **) malloc((num + 1) * sizeof(char *));
-
 	if (ptr == NULL)
 		return (NULL);
-	ptr[num - 1] = NULL;
-
+	ptr[num] = NULL;
 	while (str[i])
 	{
 	       if (str[i] != ' ' && (str[i - 1] == ' ' || i == 0))
 	       {
 		       for (j = 1; str[i + j] && str[i + j] != '\0'; j++)
 			       ;
-		       j++;
-		       ptr[count] = (char *) malloc(j * sizeof (char));
-		       j--;
+		       ptr[count] = (char *) malloc((j + 1) * sizeof(char));
 		       if (ptr[count] == NULL)
 		       {
 			       for (k = 0; k < count; k++)
 				       free(ptr[k]);
-
-			       free(ptr[num - 1]);
 			       free(ptr);
 			       return (NULL);
 		       }
@@ -78,7 +70,9 @@ char **strtow(char *str)
 		       i = i + j;
 	       }
 	       else
+	       {
 		       i++;
+	       }
 	}
 	return (ptr);
 }
