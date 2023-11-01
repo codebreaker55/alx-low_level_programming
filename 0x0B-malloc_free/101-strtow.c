@@ -41,7 +41,7 @@ char **strtow(char *str)
 	int i, j, k, len, num = 0, count = 0;
 	char **ptr;
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL || str == "")
 		return (NULL);
 	num = wrdspr(str);
 	if (num == 0)
