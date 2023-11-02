@@ -28,8 +28,8 @@ int *array_range(int min, int max)
 	}
 	while (min <= max)
 	{
-		min++;
 		str++;
+		min++;
 		ptr[str] = min;
 	}
 	return (ptr);
