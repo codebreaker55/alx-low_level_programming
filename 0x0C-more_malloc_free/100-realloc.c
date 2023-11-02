@@ -28,23 +28,24 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	if (ptr == NULL)
 	{
 		str = malloc(new_size);
-	}
-	if (str == NULL)
-	{
-		return (NULL);
-	}
-	return (str);
 
+		if (str == NULL)
+		{
+			return (NULL);
+		}
+		return (str);
+	}
 	if (new_size > old_size)
 	{
 		str = malloc(new_size);
 		if (str == NULL)
 		{
-			while (len < old_size && len < new_size)
-			{
-				*((char *)str + len) = *((char *)ptr + len);
-				len++;
-			}
+			return (NULL);
+		}
+		while (len < old_size && len < new_size)
+		{
+			*((char *)str + len) = *((char *)ptr + len);
+			len++;
 		}
 		free(ptr);
 	}
