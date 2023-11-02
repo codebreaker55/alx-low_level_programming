@@ -14,11 +14,10 @@ void *my_memset(char *s, char c, unsigned int len)
 {
 	char *str = s;
 
-	while (len > 0)
+	while (len--)
 	{
 		*s = c;
 		s++;
-		len--;
 	}
 	return (str);
 }
