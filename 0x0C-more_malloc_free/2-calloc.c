@@ -14,10 +14,11 @@ void *my_memset(char *s, char c, unsigned int len)
 {
 	char *str = s;
 
-	while (len--)
+	while (len > 0)
 	{
 		*s = c;
 		s++;
+		len--;
 	}
 	return (str);
 }
@@ -40,11 +41,11 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	if (nmemb == 0 || size == 0)
 		return (NULL);
 
-	ptr =  malloc(sizeof(int) * nmemb);
+	ptr =  malloc(size * nmemb);
 
 	if (ptr == NULL)
 		return (NULL);
 
-	my_memset(ptr, 0, sizeof(int) * nmemb);
+	my_memset(ptr, 0, size * nmemb);
 	return (ptr);
 }
