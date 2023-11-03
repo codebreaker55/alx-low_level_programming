@@ -31,7 +31,7 @@ int _atoi(const char *str)
 	int sig = 1;
 	unsigned long int rsp = 0, i, num1;
 
-	for (num1 = 0; !(str[num1] >= 48 && str[num] <= 57); num1++)
+	for (num1 = 0; !(str[num1] >= 48 && str[num1] <= 57); num1++)
 	{
 		if (str[num1] == '-')
 		{
@@ -86,7 +86,7 @@ int main(int argc, char const *argv[])
 
 	if (argc != 3)
 	{
-		_puts("Error ");
+		_puts("Error");
 		exit(98);
 	}
 	print_int(_atoi(argv[1]) * _atoi(argv[2]));
