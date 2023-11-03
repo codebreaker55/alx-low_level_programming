@@ -82,12 +82,23 @@ void print_int(unsigned long int num)
 
 int main(int argc, char const *argv[])
 {
-	(void)argc;
+	int i, j;
 
 	if (argc != 3)
 	{
 		_puts("Error");
 		exit(98);
+	}
+	for (i = 1; i < argc; i++)
+	{
+		for (j = 0; argv[i][j] != '\0'; j++)
+		{
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+			{
+				_puts("Error");
+				exit(98);
+			}
+		}
 	}
 	print_int(_atoi(argv[1]) * _atoi(argv[2]));
 	_putchar('\n');
