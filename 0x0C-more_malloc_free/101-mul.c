@@ -8,13 +8,12 @@
  * Return: nothing
 */
 
-void _puts(char *ptr)
+void _puts(const char *ptr)
 {
-	int len;
-
-	for (len = 0; ptr[len]; len++)
+	while (*ptr != '\0')
 	{
-		_putchar(ptr[len]);
+		_putchar(*ptr);
+		ptr++;
 	}
 }
 
@@ -31,17 +30,22 @@ int _atoi(const char *str)
 	int sig = 1;
 	unsigned long int rsp = 0, i, num1;
 
-	for (num1 = 0; !(str[num1] >= 48 && str[num1] <= 57); num1++)
+	for (num1 = 0; !(str[num1] >= '0' && str[num1] <= '9'); num1++)
 	{
 		if (str[num1] == '-')
 		{
 			sig = sig * -1;
 		}
+		else if (str[num1] != '+' && str[num1] != '\0')
+		{
+			_puts("Error");
+			exit(98);
+		}
 	}
-	for (i = num1; str[i] >= 48 && str[i] <= 57; i++)
+	for (i = num1; str[i] >= '0' && str[i] <= '9'; i++)
 	{
 		rsp = rsp * 10;
-		rsp = rsp + (str[i] - 48);
+		rsp = rsp + (str[i] - '0');
 	}
 	return (sig * rsp);
 }
@@ -66,7 +70,7 @@ void print_int(unsigned long int num)
 	for (; div >= 1; num %= div, div /= 10)
 	{
 		rsp = num / div;
-		_putchar(48 + rsp);
+		_putchar('0' + rsp);
 	}
 }
 
