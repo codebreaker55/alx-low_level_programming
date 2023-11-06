@@ -17,7 +17,7 @@ void free_dog(dog_t *d)
 		{
 			free(d->name);
 		}
-		else if ((*d).owner != 0)
+		if ((*d).owner != 0)
 		{
 			free((*d).owner);
 		}
