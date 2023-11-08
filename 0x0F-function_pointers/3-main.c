@@ -11,7 +11,7 @@
 
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
-	char *p;
+	int (*opr_fun)(int, int);
 	int i, j;
 
 	if (argc != 4)
@@ -22,14 +22,14 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 
 	i = atoi(argv[1]);
 	j = atoi(argv[3]);
-	p = argv[2];
+	opr_fun = get_op_func(argv[2]);
 
-	if (p[1] != '\0' || get_op_func(p) == NULL)
+	if (argv[2][1] != '\0' || opr_fun == NULL)
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	if (j == 0 && (*p == '/' || *p == '%'))
+	if (j == 0 && (argv[2][0] == '/' || argv[2][0] == '%'))
 	{
 		printf("Error\n");
 		exit(100);
@@ -37,6 +37,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	i = atoi(argv[1]);
 	j = atoi(argv[3]);
 
-	printf("%d\n", get_op_func(p)(i, j));
+	printf("%d\n", opr_fun(i, j));
 	return (0);
 }
