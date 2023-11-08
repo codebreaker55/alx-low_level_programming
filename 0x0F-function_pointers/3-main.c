@@ -9,9 +9,9 @@
  * Return: always 0 (Success)
 */
 
-int main(int __attribute__((__unused__)) argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	int (*opr_fun)(int, int);
+	int output;
 	int i, j;
 
 	if (argc != 4)
@@ -19,19 +19,15 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-
-	i = atoi(argv[1]);
-	j = atoi(argv[3]);
-	opr_fun = get_op_func(argv[2]);
-
-	if (argv[2][1] != '\0' || opr_fun == NULL)
+	if (!(get_op_func(argv[2])))
 	{
 		printf("Error\n");
 		exit(99);
 	}
 	i = atoi(argv[1]);
 	j = atoi(argv[3]);
+	output = get_op_func(argv[2])(i, j);
 
-	printf("%d\n", opr_fun(i, j));
+	printf("%d\n", output);
 	return (0);
 }
