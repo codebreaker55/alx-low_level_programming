@@ -9,7 +9,7 @@
  * Return: always 0 (Success)
 */
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
 	int (*opr_fun)(int, int);
 	int i, j;
@@ -22,9 +22,9 @@ int main(int argc, char **argv)
 
 	i = atoi(argv[1]);
 	j = atoi(argv[3]);
-	opr_fun = get_op_func(argv[2]);
 
-	if (opr_fun == NULL)
+	opr_fun = get_op_func(argv[2]);
+	if (argv[2][1] || opr_fun == NULL)
 	{
 		printf("Error\n");
 		exit(99);
@@ -34,6 +34,9 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		exit(100);
 	}
+	i = atoi(argv[1]);
+	j = atoi(argv[3]);
+
 	printf("%d\n", opr_fun(i, j));
 	return (0);
 }
