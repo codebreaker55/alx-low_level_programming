@@ -29,11 +29,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		printf("Error\n");
 		exit(99);
 	}
-	if (j == 0 && (argv[2][0] == '/' || argv[2][0] == '%'))
-	{
-		printf("Error\n");
-		exit(100);
-	}
 	i = atoi(argv[1]);
 	j = atoi(argv[3]);
 
