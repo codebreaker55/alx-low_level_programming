@@ -21,17 +21,17 @@ int main(int argc, char *argv[])
 	}
 	i = atoi(argv[1]);
 	j = atoi(argv[3]);
+	opr_fun = get_op_func(argv[2]);
 
-	if (argv[2][1])
+	if (argv[2][1] && opr_fun == NULL)
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	opr_fun = get_op_func(argv[2]);
-	if (opr_fun == NULL)
+	if (j == 0 && (argv[2][0] == '/' || argv[2][0] == '%'))
 	{
 		printf("Error\n");
-		exit(99);
+		exit(100);
 	}
 	i = atoi(argv[1]);
 	j = atoi(argv[3]);
