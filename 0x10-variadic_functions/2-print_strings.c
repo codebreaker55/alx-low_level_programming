@@ -23,10 +23,10 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	}
 	va_start(str, n);
 
-	ptr = va_arg(str, char *);
-
 	for (num = 1; num <= n; num++)
 	{
+		ptr = va_arg(str, char *);
+
 		if (ptr == NULL)
 		{
 			printf("(nil)");
