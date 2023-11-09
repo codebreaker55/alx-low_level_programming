@@ -11,7 +11,7 @@
 
 int main(int argc, char *argv[])
 {
-	int output;
+	int (*opr_fun)(int, int);
 	int i, j;
 
 	if (argc != 4)
@@ -19,15 +19,23 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-	if (!(get_op_func(argv[2])))
+	i = atoi(argv[1]);
+	j = atoi(argv[3]);
+
+	if (argv[2][1])
+	{
+		printf("Error\n");
+		exit(99);
+	}
+	opr_fun = get_op_func(argv[2]);
+	if (opr_fun == NULL)
 	{
 		printf("Error\n");
 		exit(99);
 	}
 	i = atoi(argv[1]);
 	j = atoi(argv[3]);
-	output = get_op_func(argv[2])(i, j);
 
-	printf("%d\n", output);
+	printf("%d\n", opr_fun(i, j));
 	return (0);
 }
