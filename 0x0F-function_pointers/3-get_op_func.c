@@ -24,13 +24,13 @@ int (*get_op_func(char *s))(int, int)
 
 	int i = 0;
 
-	while (i < 5)
+	while (i < 6)
 	{
-		if (s[0] == ops->op[i])
+		if ((s != 0) && s[0] == ops[i].op[0] && s[1] != 0)
 		{
-			break;
+			return (ops[i].f);
 		}
 		i++;
 	}
-	return (ops[i / 2].f);
+	return (NULL);
 }
