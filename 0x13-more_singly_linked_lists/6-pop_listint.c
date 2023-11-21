@@ -12,7 +12,7 @@
 
 int pop_listint(listint_t **head)
 {
-	listint_t head_node;
+	listint_t *head_node;
 	int n_data;
 
 	if (*head == 0 || head == 0)
@@ -25,6 +25,6 @@ int pop_listint(listint_t **head)
 		n_data = (*head)->n;
 		free(*head);
 		*head = head_node;
-		return (n_data);
 	}
+	return (n_data);
 }
