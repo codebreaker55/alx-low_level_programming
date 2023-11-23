@@ -21,10 +21,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 		{
 			bits_num++;
 		}
-		else
-		{
-			xor_valu = xor_valu >> 1;
-		}
+		xor_valu = xor_valu >> 1;
 	}
 	return (bits_num);
 }
