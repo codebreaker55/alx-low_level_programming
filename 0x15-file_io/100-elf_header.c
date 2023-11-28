@@ -100,7 +100,7 @@ void data_print(Elf64_Ehdr hdr)
 
 void version_print(Elf64_Ehdr hdr)
 {
-	printf("Version:                           %d", hdr.e_ident[EI_VERSION]);
+	printf("  Version:                           %d", hdr.e_ident[EI_VERSION]);
 
 	switch (hdr.e_ident[EI_VERSION])
 	{
