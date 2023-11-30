@@ -360,7 +360,7 @@ int main(int ac, char **av)
 	entry_point_print(hdr);
 
 	if (close(file_d))
-		dprintf(STDERR_FILENO, "Error: Can't close file descriptor: %d\n", file_d)
+		dprintf(STDERR_FILENO, "Error closing file descriptor: %d\n", file_d)
 			, exit(98);
 	return (EXIT_SUCCESS);
 }
