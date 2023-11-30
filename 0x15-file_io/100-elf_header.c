@@ -341,7 +341,7 @@ int main(int ac, char **av)
 	bytes_num = read(file_d, &hdr, sizeof(hdr));
 
 	if (bytes_num != sizeof(hdr) || bytes_num < 1)
-		dprintf(STDERR_FILENO, "Can't read from  file: %s\n", av[1]), exit(98);
+		dprintf(STDERR_FILENO, "Can't read from file: %s\n", av[1]), exit(98);
 	if (hdr.e_ident[0] == 0x7f && hdr.e_ident[1] == 'E' && hdr.e_ident[2] == 'L'
 			&& hdr.e_ident[3] == 'F')
 	{
@@ -349,6 +349,7 @@ int main(int ac, char **av)
 	}
 	else
 		dprintf(STDERR_FILENO, "Not ELF file: %s\n", av[1]), exit(98);
+
 	magic_print(hdr);
 	class_print(hdr);
 	data_print(hdr);
