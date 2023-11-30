@@ -1,17 +1,17 @@
 #include "main.h"
 #include <elf.h>
 
-void more_os_abi_print(Elf64_Ehdr h);
+void more_os_abi_print(Elf64_Ehdr hdr);
 
 /**
  * magic_print - function to print the bytes of ELF magic
  *
- * @h: is the struct for header ELF
+ * @hdr: is the struct for header ELF
  *
  * Return: nothing
 */
 
-void magic_print(Elf64_Ehdr h)
+void magic_print(Elf64_Ehdr hdr)
 {
 	int n = 0;
 
@@ -19,7 +19,7 @@ void magic_print(Elf64_Ehdr h)
 
 	while (n < EI_NIDENT)
 	{
-		printf("%2.2x%s", h.e_ident[n], n != EI_NIDENT - 1 ? " " : "\n");
+		printf("%2.2x%s", hdr.e_ident[n], n != EI_NIDENT - 1 ? " " : "\n");
 		n++;
 	}
 }
@@ -27,16 +27,16 @@ void magic_print(Elf64_Ehdr h)
 /**
  * class_print - function used to print the ELF class
  *
- * @h: is the struct for header ELF
+ * @hdr: is the struct for header ELF
  *
  * Return: nothing
 */
 
-void class_print(Elf64_Ehdr h)
+void class_print(Elf64_Ehdr hdr)
 {
 	printf("  Class:                             ");
 
-	switch (h.e_ident[EI_CLASS])
+	switch (hdr.e_ident[EI_CLASS])
 	{
 		case ELFCLASSNONE:
 			{
@@ -60,16 +60,16 @@ void class_print(Elf64_Ehdr h)
 /**
  * data_print - function used to print the ELF data
  *
- * @h: is the struct for header ELF
+ * @hdr: is the struct for header ELF
  *
  * Return: nothing
 */
 
-void data_print(Elf64_Ehdr h)
+void data_print(Elf64_Ehdr hdr)
 {
 	printf("  Data:                              ");
 
-	switch (h.e_ident[EI_DATA])
+	switch (hdr.e_ident[EI_DATA])
 	{
 		case ELFDATANONE:
 			{
@@ -93,16 +93,16 @@ void data_print(Elf64_Ehdr h)
 /**
  * version_print - function used to print the ELF version
  *
- * @h: is the struct for header ELF
+ * @hdr: is the struct for header ELF
  *
  * Return: nothing
 */
 
-void version_print(Elf64_Ehdr h)
+void version_print(Elf64_Ehdr hdr)
 {
-	printf("  Version:                           %d", h.e_ident[EI_VERSION]);
+	printf("  Version:                           %d", hdr.e_ident[EI_VERSION]);
 
-	switch (h.e_ident[EI_VERSION])
+	switch (hdr.e_ident[EI_VERSION])
 	{
 		case EV_NONE:
 			{
@@ -121,16 +121,16 @@ void version_print(Elf64_Ehdr h)
 /**
  * os_abi_print - function used to print the ELF osabi
  *
- * @h: is the struct for header ELF
+ * @hdr: is the struct for header ELF
  *
  * Return: nothing
 */
 
-void os_abi_print(Elf64_Ehdr h)
+void os_abi_print(Elf64_Ehdr hdr)
 {
 	printf("  OS/ABI:                            ");
 
-	switch (h.e_ident[EI_OSABI])
+	switch (hdr.e_ident[EI_OSABI])
 	{
 		case ELFOSABI_NONE:
 			printf("UNIX - System V");
@@ -157,7 +157,7 @@ void os_abi_print(Elf64_Ehdr h)
 			printf("UNIX - FreeBSD");
 			break;
 		default:
-			more_os_abi_print(h);
+			more_os_abi_print(hdr);
 			break;
 	}
 	printf("\n");
@@ -166,14 +166,14 @@ void os_abi_print(Elf64_Ehdr h)
 /**
  * more_os_abi_print - function that prints more ELF osabi
  *
- * @h: is a struct for the ELF header
+ * @hdr: is a struct for the ELF header
  *
  * Return: nothing
 */
 
-void more_os_abi_print(Elf64_Ehdr h)
+void more_os_abi_print(Elf64_Ehdr hdr)
 {
-	switch (h.e_ident[EI_OSABI])
+	switch (hdr.e_ident[EI_OSABI])
 	{
 		case ELFOSABI_TRU64:
 		{
@@ -201,7 +201,7 @@ void more_os_abi_print(Elf64_Ehdr h)
 			break;
 		}
 		default:
-			printf("<unknown: %x>", h.e_ident[EI_OSABI]);
+			printf("<unknown: %x>", hdr.e_ident[EI_OSABI]);
 			break;
 	}
 }
@@ -209,33 +209,33 @@ void more_os_abi_print(Elf64_Ehdr h)
 /**
  * abi_version_print - function used to print ELF ABI Version
  *
- * @h: is a struct for the ELF header
+ * @hdr: is a struct for the ELF header
  *
  * Return: nothing
 */
 
-void abi_version_print(Elf64_Ehdr h)
+void abi_version_print(Elf64_Ehdr hdr)
 {
 	printf("  ABI Version:                       %d\n",
-			h.e_ident[EI_ABIVERSION]);
+			hdr.e_ident[EI_ABIVERSION]);
 }
 
 /**
  * type_print - function used to print ELF type
  *
- * @h: is a struct for the ELF header
+ * @hdr: is a struct for the ELF header
  *
  * Return: nothing
 */
 
-void type_print(Elf64_Ehdr h)
+void type_print(Elf64_Ehdr hdr)
 {
-	char *ptr = (char *)&h.e_type;
+	char *ptr = (char *)&hdr.e_type;
 	int n = 0;
 
 	printf("  Type:                              ");
 
-	if (h.e_ident[EI_DATA] == ELFDATA2MSB)
+	if (hdr.e_ident[EI_DATA] == ELFDATA2MSB)
 	{
 		n = 1;
 	}
@@ -266,21 +266,21 @@ void type_print(Elf64_Ehdr h)
 /**
  * entry_point_print - function that prints ELF Entry point address
  *
- * @h: is a struct for the ELF header
+ * @hdr: is a struct for the ELF header
  *
  * Return: nothing
 */
 
-void entry_point_print(Elf64_Ehdr h)
+void entry_point_print(Elf64_Ehdr hdr)
 {
 	int n = 0, size = 0;
-	unsigned char *ptr = (unsigned char *)&h.e_entry;
+	unsigned char *ptr = (unsigned char *)&hdr.e_entry;
 
 	printf("  Entry point address:               0x");
 
-	if (h.e_ident[EI_DATA] != ELFDATA2MSB)
+	if (hdr.e_ident[EI_DATA] != ELFDATA2MSB)
 	{
-		n = h.e_ident[EI_CLASS] != ELFCLASS64 ? 3 : 7;
+		n = hdr.e_ident[EI_CLASS] != ELFCLASS64 ? 3 : 7;
 		while (!ptr[n])
 		{
 			n--;
@@ -297,7 +297,7 @@ void entry_point_print(Elf64_Ehdr h)
 	else
 	{
 		n = 0;
-		size = h.e_ident[EI_CLASS] != ELFCLASS64 ? 3 : 7;
+		size = hdr.e_ident[EI_CLASS] != ELFCLASS64 ? 3 : 7;
 
 		while (!ptr[n])
 		{
@@ -327,7 +327,7 @@ int main(int ac, char **av)
 {
 	int file_d;
 	ssize_t bytes_num;
-	Elf64_Ehdr h;
+	Elf64_Ehdr hdr;
 
 	if (ac != 2)
 	{
@@ -338,26 +338,26 @@ int main(int ac, char **av)
 	{
 		dprintf(STDERR_FILENO, "Can't open file: %s\n", av[1]), exit(98);
 	}
-	bytes_num = read(file_d, &h, sizeof(h));
+	bytes_num = read(file_d, &hdr, sizeof(hdr));
 
-	if (bytes_num != sizeof(h) || bytes_num < 1)
+	if (bytes_num != sizeof(hdr) || bytes_num < 1)
 		dprintf(STDERR_FILENO, "Can't read from file: %s\n", av[1]), exit(98);
-	if (h.e_ident[0] == 0x7f && h.e_ident[1] == 'E' && h.e_ident[2] == 'L'
-			&& h.e_ident[3] == 'F')
+	if (hdr.e_ident[0] == 0x7f && hdr.e_ident[1] == 'E' && hdr.e_ident[2] == 'L'
+			&& hdr.e_ident[3] == 'F')
 	{
 		printf("ELF HEADER:\n");
 	}
 	else
 		dprintf(STDERR_FILENO, "Not ELF file: %s\n", av[1]), exit(98);
 
-	magic_print(h);
-	class_print(h);
-	data_print(h);
-	version_print(h);
-	os_abi_print(h);
-	abi_version_print(h);
-	type_print(h);
-	entry_point_print(h);
+	magic_print(hdr);
+	class_print(hdr);
+	data_print(hdr);
+	version_print(hdr);
+	os_abi_print(hdr);
+	abi_version_print(hdr);
+	type_print(hdr);
+	entry_point_print(hdr);
 
 	if (close(file_d))
 		dprintf(STDERR_FILENO, "Can't close file descriptor: %d\n", file_d)
