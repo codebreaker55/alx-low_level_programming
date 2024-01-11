@@ -4,7 +4,7 @@
  * dlistint_len - function that returns the number of elements
  *	in a linked dlistint_t list
  *
- * @h is the address of the head
+ * @h: is the address of the head
  *
  * Return: the number of elements
 */
